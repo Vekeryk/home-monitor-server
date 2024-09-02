@@ -23,12 +23,20 @@ Create a .env file in the project root:
 ```
 FLASK_DEBUG=1
 API_KEY=YOUR_API_KEY
+TIME_ZONE=Europe/Kyiv
 ```
 
 ## Running the Application
 
 ```bash
 flask run -h 0.0.0.0
+```
+
+## Running with Docker
+
+```bash
+docker build -t home-monitor .
+docker run -d -p 5000:5000 -v $(pwd)/instance:/app/instance --restart unless-stopped --name home-monitor home-monitor
 ```
 
 Access the dashboard at http://localhost:5000/dashboard/.
