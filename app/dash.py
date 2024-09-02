@@ -49,7 +49,6 @@ def serve_layout():
 
 def get_graph(start_time, header):
     df = fetch_data(start_time)
-    print(df)
 
     fig_temp = px.line(df, x='timestamp', y='temperature',
                        title='Temperature Over Time', markers=True, text='temperature')
