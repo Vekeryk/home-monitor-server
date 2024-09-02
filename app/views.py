@@ -1,7 +1,8 @@
 from flask import request, jsonify
 from datetime import datetime
 from . import app, API_KEY
-from .db import db, Measurement
+from .db import db
+from .models import Measurement
 
 
 @app.route('/api/measurements', methods=['POST'])

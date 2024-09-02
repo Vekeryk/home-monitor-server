@@ -3,7 +3,7 @@ import plotly.express as px
 import dash.dependencies as dd
 from dash import html, dcc
 from datetime import datetime, timedelta
-from .db import fetch_data
+from .utils import fetch_measurement
 
 
 def init_dash(server):
@@ -48,7 +48,7 @@ def serve_layout():
 
 
 def get_graph(start_time, header):
-    df = fetch_data(start_time)
+    df = fetch_measurement(start_time)
 
     fig_temp = px.line(df, x='timestamp', y='temperature',
                        title='Temperature Over Time', markers=True, text='temperature')
