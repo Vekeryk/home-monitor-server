@@ -7,7 +7,7 @@ TIME_ZONE = os.getenv('TIME_ZONE')
 local_tz = pytz.timezone(TIME_ZONE)
 
 
-def utc_to_local_time(timestamp):
+def utc_timestamp_to_local_time(timestamp):
     return timestamp.replace(tzinfo=pytz.utc).astimezone(local_tz)
 
 
@@ -21,7 +21,7 @@ def fetch_measurement(start_time=None):
         {
             "temperature": d.temperature,
             "humidity": d.humidity,
-            "timestamp": utc_to_local_time(d.timestamp)
+            "timestamp": utc_timestamp_to_local_time(d.timestamp)
         }
         for d in data
     ]
