@@ -58,8 +58,13 @@ def get_graph(start_time, header):
                            title='Humidity Over Time', markers=True, text='humidity')
     fig_humidity.update_traces(textposition='top center', textfont_size=12)
 
+    fig_co2 = px.line(df, x='timestamp', y='co2',
+                      title='CO2 Over Time', markers=True, text='co2')
+    fig_co2.update_traces(textposition='top center', textfont_size=12)
+
     return html.Div([
         html.H1(children=header, style={"text-align": "center"}),
         dcc.Graph(id='temperature-graph', figure=fig_temp),
-        dcc.Graph(id='humidity-graph', figure=fig_humidity)
+        dcc.Graph(id='humidity-graph', figure=fig_humidity),
+        dcc.Graph(id='co2-graph', figure=fig_co2)
     ])

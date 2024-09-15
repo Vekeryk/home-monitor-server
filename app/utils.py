@@ -21,6 +21,7 @@ def fetch_measurement(start_time=None):
         {
             "temperature": d.temperature,
             "humidity": d.humidity,
+            "co2": d.co2,
             "timestamp": utc_timestamp_to_local_time(d.timestamp)
         }
         for d in data

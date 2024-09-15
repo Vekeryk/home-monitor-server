@@ -11,12 +11,20 @@ def post_temperature():
         return jsonify({'error': 'Unauthorized'}), 401
 
     data = request.json
-    if not data or not data.get('temperature') or not data.get('humidity'):
+    if not data:
+        return jsonify({'error': 'Invalid JSON payload'}), 400
+
+    temperature = data.get('temperature')
+    humidity = data.get('humidity')
+    co2 = data.get('co2')
+
+    if not temperature or not humidity or not co2:
         return jsonify({'error': 'No measurements provided'}), 400
 
     measurement = Measurement(
         temperature=data.get('temperature'),
-        humidity=data.get('humidity')
+        humidity=data.get('humidity'),
+        co2=data.get('co2')
     )
 
     db.session.add(measurement)

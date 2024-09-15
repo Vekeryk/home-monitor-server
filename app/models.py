@@ -10,4 +10,5 @@ class Measurement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     temperature = db.Column(db.Float, nullable=False)
     humidity = db.Column(db.Float, nullable=False)
+    co2 = db.Column(db.Float, nullable=True)
     timestamp = db.Column(db.DateTime, default=get_utc_timestamp)
