@@ -22,8 +22,10 @@ Create a .env file in the project root:
 
 ```
 FLASK_DEBUG=1
-API_KEY=YOUR_API_KEY
+FLASK_RUN_PORT=8080
+FLASK_RUN_HOST=0.0.0.0
 TIME_ZONE=Europe/Kyiv
+API_KEY=YOUR_API_KEY
 ```
 
 ## Running the Application
@@ -36,7 +38,7 @@ flask run -h 0.0.0.0
 
 ```bash
 docker build -t home-monitor .
-docker run -d -p 5000:5000 -v $(pwd)/instance:/app/instance --restart unless-stopped --name home-monitor home-monitor
+docker run -d -p 8080:8080 -v $(pwd)/instance:/app/instance --restart unless-stopped --name home-monitor home-monitor
 ```
 
-Access the dashboard at http://localhost:5000/dashboard/.
+Access the dashboard at http://localhost:8080/dashboard/.

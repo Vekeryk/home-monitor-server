@@ -18,6 +18,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # init database
 db.init_app(app)
+with app.app_context():
+    db.create_all()
 
 # Initialize Dash app
 init_dash(app)
